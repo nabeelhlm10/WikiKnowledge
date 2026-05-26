@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<body>
+<div th:fragment="content">
+    <section>
+        <div th:if="${quiz != null}">
+            <h2 th:text="${quiz.title}"></h2>
+            <form th:action="@{/quizzes/{id}/submit(id=${quiz.id})}" method="post">
+                <div th:each="question, questionStat : ${quiz.questions}">
+                    <div class="question-block">
+                        <h3>Question <span th:text="${questionStat.index + 1}"></span></h3>
+                        <p th:text="${question.questionText}"></p>
+                        <ul>
+                            <li th:each="option, optStat : ${question.options}">
+                                <label>
+                                    <input type="radio" th:name="${'question-' + questionStat.index}" th:value="${optStat.index}" />
+                                    <span th:text="${option}"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="button" type="submit">Submit Quiz</button>
+            </form>
+
+            <div class="result" th:if="${submitted}">
+                <h3>Result</h3>
+                <p>You scored <strong th:text="${score}"></strong> out of <strong th:text="${total}"></strong>.</p>
+            </div>
+        </div>
+        <div th:if="${quiz == null}">
+            <h2>Quiz Not Found</h2>
+            <a class="button" th:href="@{/quizzes}">Back to Quizzes</a>
+        </div>
+    </section>
+</div>
+</body>
+</html>

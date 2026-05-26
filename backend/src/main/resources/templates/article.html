@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<body>
+<div th:fragment="content">
+    <section>
+        <div th:if="${article != null}">
+            <h2 th:text="${article.title}"></h2>
+            <p th:text="${article.content}"></p>
+            <a class="button" th:href="@{/articles}">Back to Articles</a>
+        </div>
+        <div th:if="${article == null}">
+            <h2>Article Not Found</h2>
+            <p>Try another article from the library.</p>
+            <a class="button" th:href="@{/articles}">Back to Articles</a>
+        </div>
+    </section>
+</div>
+</body>
+</html>

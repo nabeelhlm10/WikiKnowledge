@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WIKIKNOWLedge</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div th:fragment="layout">
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container">
+                <h1><a th:href="@{/}">WIKIKNOWLedge</a></h1>
+                <nav>
+                    <a th:href="@{/}">Home</a>
+                    <a th:href="@{/articles}">Articles</a>
+                    <a th:href="@{/quizzes}">Quizzes</a>
+                </nav>
+            </div>
+        </header>
+        <main class="container" th:insert="~{::content}"></main>
+        <footer class="site-footer">
+            <p>WIKIKNOWLedge &copy; 2026 — Learn, explore, and quiz yourself.</p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

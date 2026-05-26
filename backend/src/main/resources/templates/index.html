@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<body>
+<div th:fragment="content">
+    <section class="hero">
+        <h2>Welcome to WIKIKNOWLedge</h2>
+        <p>Discover articles, learn new topics, and test your knowledge with interactive quizzes.</p>
+        <div class="hero-links">
+            <a class="button" th:href="@{/articles}">Explore Articles</a>
+            <a class="button button-secondary" th:href="@{/quizzes}">Take a Quiz</a>
+        </div>
+    </section>
+    <section class="overview">
+        <div>
+            <h3>Featured Articles</h3>
+            <ul>
+                <li th:each="article : ${articles}">
+                    <a th:href="@{/articles/{id}(id=${article.id})}" th:text="${article.title}"></a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Featured Quizzes</h3>
+            <ul>
+                <li th:each="quiz : ${quizzes}">
+                    <a th:href="@{/quizzes/{id}(id=${quiz.id})}" th:text="${quiz.title}"></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<body>
+<div th:fragment="content">
+    <section>
+        <h2>Article Library</h2>
+        <p>Browse educational content organized like a wiki.</p>
+        <div class="card-grid">
+            <article class="card" th:each="article : ${articles}">
+                <h3 th:text="${article.title}"></h3>
+                <p th:text="${article.content.substring(0, article.content.length() > 120 ? 120 : article.content.length()) + '...' }"></p>
+                <a class="button" th:href="@{/articles/{id}(id=${article.id})}">Read More</a>
+            </article>
+        </div>
+    </section>
+</div>
+</body>
+</html>

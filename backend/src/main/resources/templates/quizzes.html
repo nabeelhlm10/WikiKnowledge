@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<body>
+<div th:fragment="content">
+    <section>
+        <h2>Quizzes</h2>
+        <p>Test your knowledge with quizzes covering Spring Boot, MongoDB, and more.</p>
+        <div class="card-grid">
+            <article class="card" th:each="quiz : ${quizzes}">
+                <h3 th:text="${quiz.title}"></h3>
+                <p>Try this quiz to see how much you know.</p>
+                <a class="button" th:href="@{/quizzes/{id}(id=${quiz.id})}">Take Quiz</a>
+            </article>
+        </div>
+    </section>
+</div>
+</body>
+</html>

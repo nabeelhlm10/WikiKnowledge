@@ -1,0 +1,9 @@
+# Backend build output
+backend/target/
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# VS Code local settings
+.vscode/
